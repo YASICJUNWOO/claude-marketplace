@@ -2,6 +2,5 @@
   "name": "plan-docs",
   "version": "1.0.0",
   "description": "Generate project documents from bundled templates (PRD, SPEC, DATA_MODEL, CLAUDE.md, etc.)",
-  "skills": ["plan-docs"],
-  "permissions": ["read", "write"]
+  "skills": "./skills/"
 }

@@ -1,17 +1,21 @@
 {
   "name": "mason-toolkit",
-  "version": "1.0.0",
-  "description": "Mason's Claude Code plugin toolkit - brainstorming & project document generation",
-  "author": "mason",
+  "owner": {
+    "name": "mason"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Mason's Claude Code plugin toolkit - brainstorming & project document generation"
+  },
   "plugins": [
     {
       "name": "brainstorm",
-      "path": "./brainstorm",
+      "source": "./brainstorm",
       "description": "5-step idea brainstorming guide"
     },
     {
       "name": "plan-docs",
-      "path": "./plan-docs",
+      "source": "./plan-docs",
       "description": "Project document generation from templates (PRD, SPEC, DATA_MODEL, CLAUDE.md, etc.)"
     }
   ]

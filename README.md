@@ -8,6 +8,7 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 |----------|------|
 | **brainstorm** | 5단계 아이디어 브레인스토밍 가이드 |
 | **plan-docs** | 프로젝트 유형별 문서 자동 생성 (16개 템플릿 번들) |
+| **git** | Git 커밋 자동화 및 changelog 생성 (commit, changelog 스킬) |
 
 ## 설치
 
@@ -18,6 +19,7 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 # 플러그인 설치
 /plugin install brainstorm@mason-toolkit
 /plugin install plan-docs@mason-toolkit
+/plugin install git@mason-toolkit
 ```
 
 ## 사용법
@@ -49,6 +51,16 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 - `docs/DATA_MODEL.md` — 데이터 모델
 - `docs/IMPLEMENTATION_PLAN.md` — 구현 계획
 - `CLAUDE.md` — 루트 + 모듈별 Claude Code 컨텍스트
+
+### git
+
+```bash
+/git:commit                    # 변경사항 분석 후 자동 커밋
+/git:changelog last 2 weeks    # 최근 2주간 changelog 생성
+```
+
+- **commit**: 스테이징된 변경사항을 분석하여 conventional commit 메시지를 자동 생성하고 커밋
+- **changelog**: 지정 기간의 커밋 히스토리를 분석하여 구조화된 changelog 리포트 생성
 
 ## 워크플로우
 

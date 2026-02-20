@@ -1,0 +1,6 @@
+{
+  "name": "git",
+  "version": "1.0.0",
+  "description": "Git 워크플로우 도구 모음 (changelog, commit 등)",
+  "skills": "./skills/"
+}

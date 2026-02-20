@@ -17,6 +17,11 @@
       "name": "plan-docs",
       "source": "./plan-docs",
       "description": "Project document generation from templates (PRD, SPEC, DATA_MODEL, CLAUDE.md, etc.)"
+    },
+    {
+      "name": "git",
+      "source": "./git",
+      "description": "Git workflow tools - changelog, commit, etc."
     }
   ]
 }

@@ -22,6 +22,11 @@
       "name": "git",
       "source": "./git",
       "description": "Git workflow tools - changelog, commit, etc."
+    },
+    {
+      "name": "review",
+      "source": "./review",
+      "description": "Impact analysis & edge case test generation (analyze, test-edge)"
     }
   ]
 }

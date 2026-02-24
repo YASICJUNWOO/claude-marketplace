@@ -1,0 +1,6 @@
+{
+  "name": "review",
+  "version": "1.0.0",
+  "description": "임팩트 분석 및 엣지케이스 테스트 생성 (analyze, test-edge 스킬)",
+  "skills": "./skills/"
+}

@@ -9,6 +9,7 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 | **brainstorm** | 5단계 아이디어 브레인스토밍 가이드 |
 | **plan-docs** | 프로젝트 유형별 문서 자동 생성 (16개 템플릿 번들) |
 | **git** | Git 커밋 자동화 및 changelog 생성 (commit, changelog 스킬) |
+| **review** | 임팩트 분석 및 엣지케이스 테스트 생성 (analyze, test-edge 스킬) |
 
 ## 설치
 
@@ -20,6 +21,7 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 /plugin install brainstorm@mason-toolkit
 /plugin install plan-docs@mason-toolkit
 /plugin install git@mason-toolkit
+/plugin install review@mason-toolkit
 ```
 
 ## 사용법
@@ -62,14 +64,31 @@ Claude Code 플러그인 마켓플레이스 — 아이디어 브레인스토밍�
 - **commit**: 스테이징된 변경사항을 분석하여 conventional commit 메시지를 자동 생성하고 커밋
 - **changelog**: 지정 기간의 커밋 히스토리를 분석하여 구조화된 changelog 리포트 생성
 
+### review
+
+```bash
+/review:analyze                           # 세션 변경사항 전체 분석
+/review:analyze branch                    # 브랜치 전체 변경 분석
+/review:analyze commit:abc1234            # 특정 커밋 분석
+/review:analyze --focus edge              # 엣지케이스만 집중 분석
+/review:test-edge --from-analyze          # analyze 결과로 테스트 생성
+/review:test-edge 빈 배열 입력, null 처리   # 직접 엣지케이스 지정
+```
+
+- **analyze**: 변경사항의 ROI, 제약사항, 엣지케이스, 사이드 이펙트를 체계적으로 분석
+- **test-edge**: 도출된 엣지케이스에 대한 테스트 코드 자동 생성 및 실행
+
 ## 워크플로우
 
 ```
 brainstorm → plan-docs
+analyze → test-edge
 ```
 
 1. `brainstorm`으로 아이디어를 구체화
 2. 같은 세션에서 `plan-docs`를 실행하면 브레인스토밍 결과를 바탕으로 문서 생성
+3. `analyze`로 구현 변경사항의 임팩트 분석
+4. `test-edge`로 분석된 엣지케이스의 테스트 자동 생성
 
 ## 프로젝트 유형
 

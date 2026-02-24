@@ -2,7 +2,7 @@
 
 구현 전/후 변경사항의 ROI, 제약사항, 엣지케이스, 사이드 이펙트를 체계적으로 분석합니다.
 
-**입력:** `$ARGUMENTS` — `[scope] [--focus roi|constraint|edge|side] [--output markdown|summary]`
+**입력:** `$ARGUMENTS` — `[scope] [--focus roi|constraint|edge|side]`
 
 ---
 
@@ -12,9 +12,7 @@
 |------|------|--------|------|
 | scope | - | 세션 변경 | `branch`, `commit:<hash>`, `plan` 또는 텍스트 설명 |
 | `--focus` | - | 전체 | 특정 분석 항목만 집중 (`roi`, `constraint`, `edge`, `side`) |
-| `--output` | - | `markdown` | 출력 형식 (`markdown`, `summary`) |
-
-> scope는 첫 번째 위치 인자로 판별. `--focus`와 `--output`은 순서 무관.
+> scope는 첫 번째 위치 인자로 판별. `--focus`는 어디든 위치 가능.
 
 ---
 
@@ -38,8 +36,6 @@
   - `plan` 또는 그 외 텍스트 → 사용자 설명 기반 분석 모드
   - 인자 없음 → 세션 변경사항(현재 diff) 분석 모드
 - `--focus` → `roi`, `constraint`, `edge`, `side` 중 하나. 지정 시 해당 섹션만 출력
-- `--output` → `markdown`(기본) 또는 `summary`
-
 ### Step 2: 변경사항 수집
 
 #### scope: `branch`
@@ -116,8 +112,6 @@ git diff --cached
 
 ### Step 5: 결과 출력
 
-#### `--output markdown` (기본)
-
 아래 형식으로 출력합니다:
 
 ```
@@ -159,19 +153,13 @@ git diff --cached
 
 **종합 의견**: {변경사항에 대한 1-2문장 종합 판단 — 진행 권장/주의 필요/재검토 권장}
 
+**한 줄 요약**: [ROI: {판단}] [제약: {N}건] [엣지케이스: {N}건 ({미처리}건 미처리)] [사이드이펙트: {N}건]
+
 ---
 엣지케이스 테스트가 필요하면: `/review:test-edge --from-analyze`
 ```
 
-`--focus`가 지정된 경우 해당 섹션만 출력하되, 상단 헤더와 하단 안내는 유지합니다. 총정리 테이블은 항상 포함하되, `--focus` 지정 시 해당 항목 행만 표시합니다.
-
-#### `--output summary`
-
-핵심만 한 줄 요약으로 출력합니다:
-
-```
-[ROI: {판단}] [제약: {N}건] [엣지케이스: {N}건 ({미처리}건 미처리)] [사이드이펙트: {N}건]
-```
+`--focus`가 지정된 경우 해당 섹션만 출력하되, 상단 헤더와 하단 안내는 유지합니다. 총정리 테이블은 항상 포함하되, `--focus` 지정 시 해당 항목 행만 표시합니다. **한 줄 요약**은 항상 포함합니다.
 
 ---
 
@@ -192,5 +180,4 @@ git diff --cached
 /review:analyze commit:abc1234            # 특정 커밋 분석
 /review:analyze plan 인증 시스템 리팩토링    # 텍스트 설명 기반 분석
 /review:analyze --focus edge              # 엣지케이스만 집중 분석
-/review:analyze branch --output summary   # 브랜치 분석 요약
 ```

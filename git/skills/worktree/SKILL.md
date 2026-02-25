@@ -87,13 +87,12 @@ git worktree add -b <branch-name> ".worktrees/<sanitized-name>"
 
 - 생성 실패 시 에러 메시지를 사용자에게 표시하고 중단합니다.
 
-### Step 5: 디렉토리 이동
+### Step 5: 워크트리로 세션 전환
 
-```bash
-cd .worktrees/<sanitized-name>
-```
+`EnterWorktree` 내장 도구를 실행하여 세션 전체를 워크트리로 전환합니다.
 
-Bash 도구로 `cd`를 실행하여 이후 명령의 작업 디렉토리를 워크트리로 변경합니다.
+- `EnterWorktree`는 Bash `cd`와 달리 Read, Edit, Glob 등 모든 도구의 작업 디렉토리를 워크트리로 변경합니다.
+- `name` 파라미터에 sanitized 브랜치명을 전달합니다.
 
 ### Step 6: 결과 출력
 
@@ -102,9 +101,8 @@ Bash 도구로 `cd`를 실행하여 이후 명령의 작업 디렉토리를 워�
   브랜치: <branch-name>
   경로:   .worktrees/<sanitized-name>
 
-현재 작업 디렉토리가 워크트리로 이동되었습니다.
+현재 세션이 워크트리로 전환되었습니다. 모든 도구가 워크트리 경로를 사용합니다.
 
-💡 Read, Edit 등의 도구에서는 절대경로를 사용하세요.
 💡 정리: git worktree remove .worktrees/<sanitized-name>
 ```
 
@@ -112,8 +110,7 @@ Bash 도구로 `cd`를 실행하여 이후 명령의 작업 디렉토리를 워�
 
 ## 주의사항
 
-- `EnterWorktree` 내장 도구를 사용하지 않고 `git worktree` 명령으로 직접 생성합니다.
-- Bash 도구의 `cd`로 워크트리에 이동하지만, Read/Edit/Glob 등 다른 도구에서는 절대경로가 필요합니다. 결과 출력에서 이를 안내합니다.
+- `git worktree add`로 워크트리를 생성한 뒤 `EnterWorktree` 내장 도구로 세션을 전환합니다. 이렇게 하면 Read, Edit, Glob 등 모든 도구가 워크트리 경로를 사용합니다.
 - 세션 종료 시 워크트리가 자동 정리되지 않습니다. 정리 명령(`git worktree remove`)을 안내합니다.
 - `.worktrees` 디렉토리가 `.gitignore`에 포함되어 있지 않으면 추가를 권장합니다.
 

@@ -54,12 +54,18 @@
 - 예: `fix/*` → `fix/login-null-check` (대화에서 로그인 null 체크 관련 작업 중이라면)
 - 컨텍스트에서 의도를 파악할 수 없으면 사용자에게 `*` 부분을 물어봅니다.
 
+### Step 1.5: 워크트리 이름 생성
+
+Step 1에서 결정한 브랜치명의 `/`를 `-`로 치환하여 워크트리 이름을 생성합니다.
+
+- 예: `feat/add-login-page` → `feat-add-login-page`
+
 ### Step 2: 워크트리 생성
 
-`EnterWorktree` 도구를 호출합니다. `name` 파라미터는 생략합니다.
+`EnterWorktree` 도구를 호출합니다. Step 1.5에서 생성한 워크트리 이름을 `name` 파라미터로 전달합니다.
 
 ```
-EnterWorktree {}
+EnterWorktree { name: "<워크트리-이름>" }
 ```
 
 ### Step 3: 브랜치명 변경

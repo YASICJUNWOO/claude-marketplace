@@ -1,3 +1,9 @@
+---
+model: sonnet
+---
+
+> **이 스킬은 Sonnet 모델로 실행됩니다.**
+
 # Commit — Git 변경사항 분석 후 자동 커밋
 
 세션 내 변경사항 또는 브랜치 전체 변경사항을 분석하여 conventional commit 형식으로 자동 커밋합니다.
